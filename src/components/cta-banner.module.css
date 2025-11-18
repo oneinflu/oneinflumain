@@ -1,0 +1,120 @@
+/* Section 6 — CTA Banner: Final Push to Signup */
+
+.section {
+  position: relative;
+  background: linear-gradient(135deg, #6B0FFF, #9D4CFF);
+  overflow: hidden;
+}
+
+.inner {
+  width: min(880px, 92vw);
+  margin: 0 auto;
+  padding: 72px 20px; /* 72 top/bottom */
+  text-align: center; /* Everything centered */
+  color: #FFFFFF;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.subline {
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0.95;
+  margin-top: 20px; /* 20px under title */
+  margin-bottom: 32px; /* 32px under subline */
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 10px;
+  background: #FFFFFF; /* white */
+  color: #7B32FF; /* purple text */
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 8px 25px rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.ctaBtn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px rgba(255,255,255,0.32);
+}
+.ctaBtn:focus-visible {
+  outline: 3px solid rgba(255,255,255,0.9);
+  outline-offset: 3px;
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 160ms ease;
+}
+.ctaBtn:hover .arrow { transform: translateX(4px); }
+
+.trustList {
+  margin-top: 24px; /* 24px above */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.85);
+  font-size: 14px;
+}
+
+.trustItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkIcon {
+  width: 18px;
+  height: 18px;
+  display: inline-grid;
+  place-items: center;
+}
+
+/* Optional premium motion background */
+.bgLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  filter: blur(42px);
+  border-radius: 50%;
+  opacity: 0.12;
+  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
+  animation: float 14s ease-in-out infinite;
+}
+.blob:nth-child(1) { left: 10%; top: 20%; }
+.blob:nth-child(2) { right: 12%; top: 30%; animation-duration: 16s; }
+.blob:nth-child(3) { left: 35%; bottom: 18%; animation-duration: 12s; }
+
+@keyframes float {
+  0% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(10px, -12px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+@media (max-width: 640px) {
+  .inner { padding: 48px 20px; } /* 48 on mobile */
+  .ctaBtn { width: 100%; } /* full-width button */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctaBtn { transition: none; }
+  .blob { animation: none; }
+}

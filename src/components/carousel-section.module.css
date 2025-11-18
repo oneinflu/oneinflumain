@@ -1,0 +1,324 @@
+/* Third Section: Explore the Power of INFLU — Premium Feature Carousel */
+
+.section {
+  background: #FFFFFF;
+  position: relative;
+  padding: 80px 0;
+}
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, #F8F5FF 0%, #FFFFFF 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 28px;
+  font-weight: 800;
+  color: #2C2740;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+.subhead {
+  margin-top: 16px; /* 16px below title */
+  font-size: 16px;
+  color: #6A6480;
+  text-align: center;
+}
+
+.carouselWrap {
+  margin-top: 48px; /* 48px before carousel */
+  position: relative;
+}
+.edgeLeft, .edgeRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  pointer-events: none;
+  z-index: 2;
+}
+.edgeLeft { left: 0; background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0)); }
+.edgeRight { right: 0; background: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0)); }
+
+.nav {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.navBtn {
+  pointer-events: auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid #E9E3FF;
+  background: #FFFFFF;
+  box-shadow: 0 10px 24px rgba(123,50,255,0.12);
+  display: grid;
+  place-items: center;
+  color: #3A3550;
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+.carouselWrap:hover .navBtn { opacity: 1; }
+.navBtn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 28px rgba(123,50,255,0.2);
+  color: var(--influ-purple);
+}
+.navBtn:focus-visible {
+  outline: 2px solid #B9A8FF;
+  outline-offset: 2px;
+}
+
+.swiperRoot { padding: 10px 8px; overflow: visible; }
+
+.card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+  border: 1px solid #EEE8FF;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+  will-change: transform, box-shadow;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 58px rgba(27,19,63,0.14);
+}
+
+/* Entrance motion is handled by Framer on the wrapper */
+
+.visual {
+  height: 120px;
+  border-radius: 12px;
+  background: #FBFAFF;
+  border: 1px dashed #E9E3FF;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.card:hover .visual { --durPulse: 2.2s; --durRise: 2.6s; --durPop: 2.4s; --durFlip: 2.6s; }
+.visual svg { width: 100%; height: 100%; }
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2C2740;
+  letter-spacing: -0.01em;
+}
+.desc {
+  font-size: 14px;
+  color: #6A6480;
+  line-height: 1.6;
+}
+.tag {
+  font-size: 12px;
+  color: var(--influ-purple);
+  background: #F5F1FF;
+  border: 1px solid #E3D9FF;
+  border-radius: 999px;
+  padding: 4px 8px;
+  display: inline-block;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #3A3550;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  width: fit-content;
+  transition: color 160ms ease, transform 160ms ease, border-color 160ms ease;
+}
+.cta:hover {
+  color: var(--influ-purple);
+  transform: translateX(4px);
+  border-color: #D9CEFF;
+}
+
+/* Micro-animation primitives */
+.pulse {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #7B32FF, #A166FF);
+  animation: pulse var(--durPulse, 2.8s) var(--ease, ease) infinite;
+  animation-play-state: var(--play, running);
+}
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.12); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.9; }
+}
+
+.bars { position: absolute; inset: 16px; display: flex; align-items: flex-end; gap: 8px; }
+.bar { width: 18px; background: #A166FF; border-radius: 6px 6px 0 0; animation: rise var(--durRise, 3.2s) var(--ease, ease) infinite; animation-play-state: var(--play, running); }
+.bar:nth-child(1) { height: 30%; animation-delay: 0.1s; }
+.bar:nth-child(2) { height: 60%; animation-delay: 0.25s; }
+.bar:nth-child(3) { height: 45%; animation-delay: 0.4s; }
+.bar:nth-child(4) { height: 75%; animation-delay: 0.55s; }
+@keyframes rise { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+.gridDots { position: absolute; inset: 18px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+.dot { width: 10px; height: 10px; border-radius: 4px; background: #E3D9FF; animation: pop var(--durPop, 3s) var(--ease, ease) infinite; animation-play-state: var(--play, running); }
+.dot:nth-child(odd) { background: #F0EAFF; }
+@keyframes pop { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+
+.tags { position: absolute; inset: 20px; display: flex; gap: 8px; align-items: center; }
+.tagCard { padding: 6px 10px; border-radius: 999px; border: 1px solid #E3D9FF; background: #FFFFFF; color: #5A556F; animation: flip var(--durFlip, 3.4s) var(--ease, ease) infinite; transform-origin: 50% 50%; animation-play-state: var(--play, running); }
+@keyframes flip { 0%,100% { transform: rotateX(0deg); } 50% { transform: rotateX(20deg); } }
+
+.avatars { position: absolute; inset: 20px; display: flex; gap: 10px; align-items: center; }
+.avatar { width: 26px; height: 26px; border-radius: 999px; background: #F2EAFF; border: 1px solid #E3D9FF; position: relative; }
+.link { position: absolute; top: 50%; left: 26px; width: 24px; height: 2px; background: #A166FF; transform: translateY(-50%); animation: connect 2.6s var(--ease, ease) infinite; animation-play-state: var(--play, running); }
+@keyframes connect { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
+
+/* Leads: simple kanban lanes with tickets sliding */
+.kanban { position: absolute; inset: 14px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.lane { background: #F8F6FF; border: 1px solid #E9E3FF; border-radius: 10px; padding: 8px; position: relative; overflow: hidden; }
+.ticket { width: 70%; height: 16px; border-radius: 6px; background: #FFFFFF; border: 1px solid #E3D9FF; position: absolute; left: 10%; animation: shift var(--durShift, 3.2s) var(--ease, ease) infinite; animation-play-state: var(--play, running); }
+.ticket:nth-child(1) { top: 10%; animation-delay: 0s; }
+.ticket:nth-child(2) { top: 40%; animation-delay: 0.3s; }
+.ticket:nth-child(3) { top: 70%; animation-delay: 0.6s; }
+@keyframes shift { 0% { transform: translateX(0); } 50% { transform: translateX(60%); } 100% { transform: translateX(0); } }
+
+/* Projects: progress line animates subtly */
+.progressMini { position: absolute; inset: 20px; display: grid; gap: 8px; }
+.progressTrack { height: 6px; border-radius: 999px; background: #ECE6FF; overflow: hidden; }
+.progressFill { height: 100%; background: linear-gradient(90deg, var(--influ-purple), #A166FF); width: 35%; animation: load var(--durLoad, 3s) var(--ease, ease) infinite; animation-play-state: var(--play, running); }
+@keyframes load { 0%,100% { width: 35%; } 50% { width: 75%; } }
+
+/* Clients: nodes connecting */
+.nodes { position: absolute; inset: 24px; }
+.node { position: absolute; width: 12px; height: 12px; border-radius: 999px; background: #D9CEFF; }
+.line { position: absolute; height: 2px; background: #A166FF; opacity: 0.8; animation: blink var(--durBlink, 2.6s) var(--ease, ease) infinite; animation-play-state: var(--play, running); }
+@keyframes blink { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+/* Team: simple network pulse */
+.network { position: absolute; inset: 22px; }
+.netNode { position: absolute; width: 14px; height: 14px; border-radius: 999px; background: #F2EAFF; border: 1px solid #E3D9FF; }
+.netLink { position: absolute; height: 2px; background: #8B5CFF; animation: pulseLink var(--durPulseLink, 2.8s) var(--ease, ease) infinite; animation-play-state: var(--play, running); }
+@keyframes pulseLink { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
+
+/* Team: grouped people avatars (simple cluster) */
+.people { position: absolute; inset: 16px; display: flex; gap: 10px; justify-content: center; align-items: flex-end; }
+.person { width: 28px; height: 28px; border-radius: 999px; background: #F2EAFF; border: 1px solid #E3D9FF; box-shadow: 0 3px 8px rgba(27,19,63,0.08); animation: bob var(--durBob, 2.8s) var(--ease, ease) infinite; animation-play-state: var(--play, running); }
+.person:nth-child(2) { width: 32px; height: 32px; animation-delay: 0.15s; }
+.person:nth-child(3) { width: 24px; height: 24px; animation-delay: 0.3s; }
+.person:nth-child(4) { width: 30px; height: 30px; animation-delay: 0.45s; }
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+/* Billing: receipt stack drifting */
+.receipts { position: absolute; inset: 18px; display: flex; gap: 8px; align-items: center; }
+.sheet { width: 36px; height: 46px; background: #FFFFFF; border: 1px solid #E3D9FF; border-radius: 6px; box-shadow: 0 4px 10px rgba(27,19,63,0.06); animation: float var(--durFloat, 3s) var(--ease, ease) infinite; animation-play-state: var(--play, running); }
+.sheet:nth-child(2) { animation-delay: 0.2s; }
+.sheet:nth-child(3) { animation-delay: 0.4s; }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+/* Payments: incoming money growth (coins rising + arrow up) */
+.moneyIn { position: absolute; inset: 14px; }
+.coinIn { position: absolute; bottom: 10px; left: 22px; width: 10px; height: 10px; border-radius: 999px; background: linear-gradient(135deg, #7B32FF, #A166FF); box-shadow: 0 2px 8px rgba(123,50,255,0.18); animation: riseCoin var(--durCoin, 2.6s) var(--ease, ease) infinite; animation-play-state: var(--play, running); }
+.coinIn:nth-child(2) { left: 46px; animation-delay: 0.15s; }
+.coinIn:nth-child(3) { left: 70px; animation-delay: 0.3s; }
+.coinIn:nth-child(4) { left: 94px; animation-delay: 0.45s; }
+@keyframes riseCoin { 0%,100% { transform: translateY(0); opacity: 0.9; } 50% { transform: translateY(-14px); opacity: 1; } }
+.arrowUp { position: absolute; right: 16px; bottom: 14px; width: 14px; height: 14px; border-right: 2px solid #A166FF; border-bottom: 2px solid #A166FF; transform: rotate(-45deg); animation: bounceUp var(--durBounce, 2.6s) var(--ease, ease) infinite; animation-play-state: var(--play, running); opacity: 0.8; }
+@keyframes bounceUp { 0%,100% { transform: translateY(0) rotate(-45deg); opacity: 0.7; } 50% { transform: translateY(-8px) rotate(-45deg); opacity: 1; } }
+
+/* Payments (semantic): invoice fly, paid badge, checkmark, coins into bank */
+.paymentScene { position: absolute; inset: 14px; }
+.invoiceFly { position: absolute; left: 16px; top: 16px; width: 48px; height: 34px; background: #FFFFFF; border: 1px solid #E3D9FF; border-radius: 8px; box-shadow: 0 4px 10px rgba(27,19,63,0.06); animation: sendInvoice var(--durSend, 3s) var(--ease, ease) infinite; animation-play-state: var(--play, running); }
+@keyframes sendInvoice { 0% { transform: translateX(0) rotate(0deg); opacity: 0.95; } 50% { transform: translateX(84px) rotate(2deg); opacity: 1; } 100% { transform: translateX(0) rotate(0deg); opacity: 0.95; } }
+.paidBadge { position: absolute; left: 18px; bottom: 14px; padding: 4px 8px; border-radius: 999px; background: #F5F1FF; border: 1px solid #E3D9FF; color: var(--influ-purple); font-size: 11px; font-weight: 700; box-shadow: 0 3px 8px rgba(27,19,63,0.08); animation: paidPulse var(--durPaid, 2.6s) var(--ease, ease) infinite; animation-play-state: var(--play, running); }
+.paidBadge::after { content: "PAID"; }
+@keyframes paidPulse { 0%,100% { transform: translateY(0); opacity: 0.8; } 50% { transform: translateY(-3px); opacity: 1; } }
+.check { position: absolute; left: 94px; bottom: 18px; width: 12px; height: 6px; border-left: 2px solid #7B32FF; border-bottom: 2px solid #7B32FF; transform: rotate(-45deg); animation: checkPop var(--durCheck, 3s) var(--ease, ease) infinite; animation-play-state: var(--play, running); }
+@keyframes checkPop { 0%,100% { transform: scale(1) rotate(-45deg); opacity: 0.8; } 50% { transform: scale(1.15) rotate(-45deg); opacity: 1; } }
+.bank { position: absolute; right: 16px; top: 16px; width: 80px; height: 60px; }
+.bankRoof { position: absolute; left: 10px; top: 6px; width: 60px; height: 10px; background: #EDE6FF; border: 1px solid #E3D9FF; border-radius: 6px; }
+.bankBody { position: absolute; left: 10px; top: 18px; width: 60px; height: 40px; background: #F8F6FF; border: 1px solid #E9E3FF; border-radius: 8px; box-shadow: 0 3px 8px rgba(27,19,63,0.06); }
+.bankSlot { position: absolute; left: 28px; top: 30px; width: 24px; height: 4px; background: #A166FF; opacity: 0.8; animation: slotGlow var(--durSlot, 2.8s) var(--ease, ease) infinite; animation-play-state: var(--play, running); }
+@keyframes slotGlow { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
+.coinBank { position: absolute; right: 42px; top: 14px; width: 12px; height: 12px; border-radius: 999px; background: linear-gradient(135deg, #7B32FF, #A166FF); box-shadow: 0 2px 8px rgba(123,50,255,0.18); animation: deposit var(--durDeposit, 3s) var(--ease, ease) infinite; animation-play-state: var(--play, running); }
+.coinBank:nth-child(2) { animation-delay: 0.15s; }
+@keyframes deposit { 0% { transform: translateY(0); opacity: 0.9; } 50% { transform: translateY(18px); opacity: 1; } 100% { transform: translateY(0); opacity: 0.9; } }
+
+/* Expenses: payouts (coins flowing outward + left pulse) */
+.moneyOut { position: absolute; inset: 14px; }
+.coinOut { position: absolute; right: 20px; width: 10px; height: 10px; border-radius: 999px; background: #F0EAFF; border: 1px solid #E3D9FF; box-shadow: 0 2px 6px rgba(27,19,63,0.08); animation: flowLeft var(--durFlow, 2.6s) var(--ease, ease) infinite; animation-play-state: var(--play, running); }
+.coinOut:nth-child(1) { top: 32%; animation-delay: 0s; }
+.coinOut:nth-child(2) { top: 52%; animation-delay: 0.2s; }
+.coinOut:nth-child(3) { top: 72%; animation-delay: 0.4s; }
+@keyframes flowLeft { 0% { transform: translateX(0); opacity: 0.9; } 50% { transform: translateX(-28px); opacity: 1; } 100% { transform: translateX(0); opacity: 0.9; } }
+.arrowLeft { position: absolute; left: 14px; top: 50%; width: 28px; height: 2px; background: #A166FF; transform: translateY(-50%); animation: pulseLeft var(--durPulseLeft, 2.6s) var(--ease, ease) infinite; animation-play-state: var(--play, running); opacity: 0.8; }
+@keyframes pulseLeft { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
+
+/* Expenses: currency notes flowing from wallet to recipients (salary payout) */
+.cashOut { position: absolute; inset: 14px; }
+.wallet { position: absolute; right: 18px; bottom: 16px; width: 48px; height: 32px; background: #FFFFFF; border: 1px solid #E3D9FF; border-radius: 8px; box-shadow: 0 4px 10px rgba(27,19,63,0.06); }
+.note, .note2, .note3 { position: absolute; right: 22px; width: 42px; height: 24px; background: #FDFBFF; border: 1px solid #E3D9FF; border-radius: 6px; box-shadow: 0 3px 8px rgba(27,19,63,0.08); animation: payNote var(--durPay, 2.6s) var(--ease, ease) infinite; animation-play-state: var(--play, running); }
+.note { bottom: 18px; animation-delay: 0s; }
+.note2 { bottom: 34px; animation-delay: 0.15s; }
+.note3 { bottom: 50px; animation-delay: 0.3s; }
+.note::after, .note2::after, .note3::after { content: "₹"; position: absolute; right: 8px; top: 4px; color: #7B32FF; font-weight: 700; font-size: 12px; }
+@keyframes payNote { 0% { transform: translateX(0) rotate(0deg); opacity: 0.95; } 50% { transform: translateX(-56px) rotate(-4deg); opacity: 1; } 100% { transform: translateX(0) rotate(0deg); opacity: 0.95; } }
+.recipientRow { position: absolute; left: 12px; top: 26px; display: flex; gap: 8px; }
+.recipientCard { width: 34px; height: 26px; background: #F8F6FF; border: 1px solid #E9E3FF; border-radius: 6px; box-shadow: 0 2px 6px rgba(27,19,63,0.06); animation: recipientPulse var(--durRecipient, 3s) var(--ease, ease) infinite; animation-play-state: var(--play, running); }
+.recipientCard:nth-child(2) { animation-delay: 0.2s; }
+.recipientCard:nth-child(3) { animation-delay: 0.4s; }
+@keyframes recipientPulse { 0%,100% { transform: translateY(0); opacity: 0.8; } 50% { transform: translateY(-3px); opacity: 1; } }
+
+/* Billing: invoicing (main sheet + stamp pop) */
+.invoice { position: absolute; inset: 14px; }
+.invoiceSheet { position: absolute; left: calc(50% - 32px); top: 12px; width: 64px; height: 78px; background: #FFFFFF; border: 1px solid #E3D9FF; border-radius: 8px; box-shadow: 0 6px 16px rgba(27,19,63,0.08); }
+.invoiceLine { position: absolute; left: calc(50% - 26px); width: 52px; height: 6px; background: #F2EAFF; border: 1px solid #E3D9FF; border-radius: 999px; }
+.invoiceLine:nth-child(2) { top: 42px; }
+.invoiceLine:nth-child(3) { top: 58px; }
+.stamp { position: absolute; right: 18px; bottom: 18px; width: 22px; height: 22px; border-radius: 999px; background: linear-gradient(135deg, #7B32FF, #A166FF); box-shadow: 0 3px 10px rgba(123,50,255,0.2); animation: stampPop var(--durStamp, 3s) var(--ease, ease) infinite; animation-play-state: var(--play, running); }
+@keyframes stampPop { 0%,100% { transform: scale(1); opacity: 0.9; } 50% { transform: scale(1.12); opacity: 1; } }
+
+/* Collaborators: orbiting contributors around a central project */
+.orbit { position: absolute; inset: 12px; }
+.centerDot { position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; border-radius: 999px; background: #D9CEFF; transform: translate(-50%, -50%); }
+.orbitWrap { position: absolute; left: 50%; top: 50%; width: 80px; height: 80px; transform: translate(-50%, -50%); }
+.orbiter { position: absolute; left: 50%; top: 50%; width: 22px; height: 22px; border-radius: 999px; background: #F2EAFF; border: 1px solid #E3D9FF; box-shadow: 0 2px 8px rgba(27,19,63,0.08); transform: translate(-50%, -50%) rotate(0deg) translate(36px) rotate(0deg); animation: orbit var(--durOrbit, 5.2s) linear infinite; animation-play-state: var(--play, running); }
+.orbiter:nth-child(2) { animation-duration: 6.2s; }
+.orbiter:nth-child(3) { animation-duration: 7.2s; }
+@keyframes orbit { from { transform: translate(-50%, -50%) rotate(0deg) translate(36px) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg) translate(36px) rotate(-360deg); } }
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
+  .cta { transition: none; }
+  .pulse, .bar, .dot, .tagCard, .link, .coinIn, .arrowUp, .coinOut, .arrowLeft, .stamp, .orbiter, .person, .invoiceFly, .paidBadge, .check, .bankSlot, .coinBank { animation: none !important; }
+}
+
+/* Breakpoints for Swiper root spacing if needed */
+@media (max-width: 1024px) {
+  .swiperRoot { padding: 8px 6px; }
+}
+@media (max-width: 768px) {
+  .heading { font-size: 24px; }
+  .subhead { font-size: 15px; }
+}

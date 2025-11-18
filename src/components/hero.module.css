@@ -1,0 +1,175 @@
+.heroSection {
+  background: linear-gradient(135deg, var(--deep-purple) 0%, var(--accent-violet) 100%);
+  color: #ffffff;
+}
+
+.inner {
+  padding: 96px 0; /* desktop vertical padding */
+}
+
+@media (max-width: 1199px) {
+  .inner { padding: 64px 0; }
+}
+@media (max-width: 767px) {
+  .inner { padding: 32px 0; }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-8);
+}
+
+.left {
+  grid-column: 1 / span 6; /* 48% approx */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.right {
+  grid-column: 7 / span 6;
+  position: relative;
+}
+
+@media (max-width: 1199px) {
+  .left { grid-column: 1 / span 12; }
+  .right { grid-column: 1 / span 12; margin-top: var(--space-8); }
+}
+
+.headline {
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .headline { font-size: 42px; }
+}
+@media (max-width: 767px) {
+  .headline { font-size: 34px; }
+}
+
+.subline {
+  font-size: 18px;
+  line-height: 32px;
+  color: #EDEBFF; /* slightly muted */
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: 12px 20px;
+  border-radius: var(--radius-button);
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.ctaPrimary {
+  background: #ffffff;
+  color: var(--influ-purple);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+.ctaPrimary:hover {
+  box-shadow: 0 8px 28px rgba(123, 50, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+.ctaSecondary {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+.ctaSecondary:hover {
+  border-color: #D9CCFF;
+}
+
+.focusRing:focus-visible {
+  outline: 3px dotted #F2E8FF;
+  outline-offset: 2px;
+}
+
+.trust {
+  font-size: 14px;
+  color: #EDEBFF;
+}
+
+/* Mockup & floating cards */
+.mockupWrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 360px;
+}
+
+.device {
+  width: min(560px, 90%);
+  border-radius: var(--radius-card);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+.device:hover { transform: scale(1.02); box-shadow: 0 20px 60px rgba(0,0,0,0.35); }
+
+.floatingCard {
+  position: absolute;
+  background: #ffffff;
+  color: #0f0f10;
+  border-radius: var(--radius-card);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  padding: 10px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transform: translate3d(0,0,0);
+}
+.floatIcon { width: 18px; height: 18px; color: var(--influ-purple); }
+.floatLabel { font-size: 14px; font-weight: 600; }
+
+/* default positions (will be offset by JS parallax) */
+.f1 { top: 6%; left: 10%; }
+.f2 { bottom: 10%; left: 6%; }
+.f3 { top: 12%; right: 8%; }
+.f4 { bottom: 12%; right: 6%; }
+
+/* Entrance animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleFade {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.enterHeadline { animation: fadeUp 420ms cubic-bezier(.22,.9,.3,1) both; animation-delay: 120ms; }
+.enterSubline { animation: fadeUp 420ms cubic-bezier(.22,.9,.3,1) both; animation-delay: 220ms; }
+.enterPrimary { animation: scaleFade 360ms cubic-bezier(.22,.9,.3,1) both; animation-delay: 340ms; }
+.enterSecondary { animation: fadeUp 420ms cubic-bezier(.22,.9,.3,1) both; animation-delay: 380ms; }
+.enterTrust { animation: fadeUp 300ms cubic-bezier(.22,.9,.3,1) both; animation-delay: 520ms; }
+.enterCard { animation: scaleFade 420ms ease-out both; }
+
+/* Floating device loop */
+@keyframes floatSlow {
+  0% { transform: translateY(-6px); }
+  50% { transform: translateY(0); }
+  100% { transform: translateY(-6px); }
+}
+.deviceFloat { animation: floatSlow 6s ease-in-out infinite; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .enterHeadline, .enterSubline, .enterPrimary, .enterSecondary, .enterTrust, .enterCard, .deviceFloat {
+    animation: none;
+  }
+}

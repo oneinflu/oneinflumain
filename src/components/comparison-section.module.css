@@ -1,0 +1,201 @@
+/* Section 5 — Comparison: Why INFLU is Better */
+
+.section {
+  background: #FFFFFF;
+  padding: 84px 0;
+  position: relative;
+}
+
+.container {
+  width: min(1180px, 92vw);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1F1F1F;
+  text-align: center;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px; /* 16px under title */
+}
+
+.subline {
+  font-size: 16px;
+  color: #3B3B3B;
+  text-align: center;
+  opacity: 0.9;
+  margin-bottom: 48px; /* 48px before comparison component */
+}
+
+.panel {
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(123, 50, 255, 0.08);
+  border: 1px solid #EEE8FF;
+  overflow: hidden;
+}
+
+.headerRow {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  align-items: center;
+  gap: 0;
+  border-bottom: 1px solid #EEE8FF;
+}
+
+.headCell {
+  padding: 18px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #34324A;
+}
+
+.headInflu {
+  background: #F8F5FF; /* Soft lavender */
+}
+
+.headOthers {
+  background: #F6F6F8; /* Light grey */
+}
+
+.badge {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #7B32FF;
+  background: #F0E9FF;
+  border: 1px solid #E3D9FF;
+  border-radius: 999px;
+  padding: 4px 8px;
+}
+
+.priceBadge {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #5A5A5A;
+  background: #EFEFF2;
+  border: 1px solid #E2E2E5;
+  border-radius: 999px;
+  padding: 4px 8px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid #EEE8FF; /* thin divider */
+}
+
+.featureCell {
+  padding: 20px 16px;
+}
+
+.featureName {
+  font-size: 16px;
+  font-weight: 600; /* Inter 600 */
+  color: #222222;
+}
+
+.influCell {
+  padding: 20px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #F8F5FF; /* lavender */
+  transition: background 200ms ease, box-shadow 200ms ease;
+}
+
+.influCell:hover {
+  background: #F3EDFF;
+}
+
+.othersCell {
+  padding: 20px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #F6F6F8; /* light grey */
+}
+
+.checkIconWrap, .crossIconWrap {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+}
+
+.checkIconWrap { box-shadow: 0 0 0 0 rgba(123,50,255,0); }
+.influCell:hover .checkIconWrap { box-shadow: 0 0 0 6px rgba(123,50,255,0.08); }
+
+.cellText {
+  font-size: 14px;
+  font-weight: 600;
+  color: #342A52;
+}
+
+.cellTextGrey {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666876;
+}
+
+.ctaWrap {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.ctaTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2C2740;
+  margin-bottom: 10px;
+}
+
+.ctaSubtitle {
+  font-size: 14px;
+  color: #5B5674;
+  margin-top: 8px;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #7B32FF, #9F6AF6);
+  color: #FFFFFF;
+  font-weight: 700;
+  border: none;
+  box-shadow: 0 12px 28px rgba(123,50,255,0.18);
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.ctaButton:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(123,50,255,0.22); }
+.ctaButton:focus-visible { outline: 2px solid #B9A8FF; outline-offset: 2px; }
+
+.bottomEdge {
+  margin-top: 36px;
+  height: 60px;
+  background: linear-gradient(to bottom, #FFFFFF, #FAF7FF);
+  border-radius: 0 0 16px 16px;
+}
+
+@media (max-width: 768px) {
+  .headerRow, .row { grid-template-columns: 1fr; }
+  .headInflu, .headOthers { background: transparent; }
+  .featureCell, .influCell, .othersCell { background: transparent; }
+  .row { padding: 6px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .influCell { transition: none; }
+  .ctaButton { transition: none; }
+}

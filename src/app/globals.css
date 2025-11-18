@@ -1,12 +1,37 @@
 :root {
+  /* Brand Colors */
+  --influ-purple: #7B32FF;
+  --deep-purple: #6B0FFF;
+  --accent-violet: #9D4CFF;
+  --lavender: #EEE7FF; /* soft lavender for gradient sections */
+
+  /* Base Colors */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f0f10;
+  --muted: #4b4b5a;
+
+  /* Radii */
+  --radius-card: 12px;
+  --radius-button: 8px;
+
+  /* Spacing Scale (airy, premium) */
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Layout */
+  --container-max: 1200px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --muted: #999999;
   }
 }
 
@@ -19,9 +44,12 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  letter-spacing: 0.01em;
 }
 
 * {
@@ -35,8 +63,41 @@ a {
   text-decoration: none;
 }
 
+/* Grid utilities */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-6);
+}
+
+/* Soft animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
 }
+
+/* Offset main content for fixed header to avoid overlap */
+.site-main { padding-top: 76px; }
+@media (max-width: 900px) { .site-main { padding-top: 66px; } }
+
+/* Ensure in-page anchor scroll accounts for fixed header height */
+html { scroll-padding-top: 86px; }
