@@ -31,7 +31,8 @@ export default function SecondSection() {
   ];
 
   return (
-    <section aria-label="The Complete System for Running Your Creator Business" className={styles.section}>
+    <section aria-label="The Complete System for Running Your Creator Business" className={styles.sectionWrap}>
+      <div className={styles.section}>
       <h2 className={styles.heading}>Everything you need. Unlimited. Free forever.</h2>
       <p className={styles.subhead}>
         Manage your leads, projects, payments, team, and entire workflow without paying a single rupee.
@@ -106,6 +107,7 @@ export default function SecondSection() {
           Get started free
           <ArrowRight size={16} />
         </a>
+      </div>
       </div>
     </section>
   );

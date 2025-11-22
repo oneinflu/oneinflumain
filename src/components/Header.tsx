@@ -15,17 +15,11 @@ import {
 } from "lucide-react";
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 900px)");
@@ -49,7 +43,7 @@ export default function Header() {
   const logoSrc = "/logo.svg";
 
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : styles.transparent}`}>
+    <header className={`${styles.header} ${styles.scrolled}`}>
       <div className="container">
         <div className={styles.row}>
           <Link href="/" className={styles.logo} aria-label="INFLU Home">
@@ -107,12 +101,12 @@ export default function Header() {
 
           <div className={styles.actions}>
             {!isMobile && (
-              <Link href="/login" className={`${styles.login} ${scrolled ? styles.textDark : styles.textLight}`}>Login</Link>
+              <Link href="/login" className={`${styles.login} ${styles.textDark}`}>Login</Link>
             )}
             {!isMobile && (
               <Link
                 href="/get-started"
-                className={`${styles.cta} ${scrolled ? styles.ctaScrolled : styles.ctaDefault}`}
+                className={`${styles.cta} ${styles.ctaScrolled}`}
               >
                 Get Started
               </Link>
