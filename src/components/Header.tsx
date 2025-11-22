@@ -101,11 +101,11 @@ export default function Header() {
 
           <div className={styles.actions}>
             {!isMobile && (
-              <Link href="/login" className={`${styles.login} ${styles.textDark}`}>Login</Link>
+              <Link href="https://console.oneinflu.com" className={`${styles.login} ${styles.textDark}`}>Login</Link>
             )}
             {!isMobile && (
               <Link
-                href="/get-started"
+                href="https://console.oneinflu.com"
                 className={`${styles.cta} ${styles.ctaScrolled}`}
               >
                 Get Started

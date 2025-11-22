@@ -27,9 +27,9 @@ export default function SixthSection() {
         <h2 id="cta-title" className={styles.title}>Start managing your creator business like a pro.</h2>
         <p className={styles.subline}>Get your free account — no limits, no credit card, no trials.</p>
 
-        <button className={styles.ctaBtn} aria-label="Create Free Account">
+        <a href="https://console.oneinflu.com" className={styles.ctaBtn} aria-label="Create Free Account">
           Create Free Account <span className={styles.arrow}>→</span>
-        </button>
+        </a>
 
         <div className={styles.trustList} aria-label="Trust points">
           <span className={styles.trustItem}><span className={styles.checkIcon}><WhiteCheck /></span> Free forever</span>

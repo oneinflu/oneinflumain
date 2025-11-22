@@ -103,7 +103,7 @@ export default function SecondSection() {
           <Infinity className={styles.tagIcon} size={16} />
           <span>And yes — all of this is completely free. No trial. No limits. Free forever.</span>
         </p>
-        <a href="#" className={styles.tagCta} aria-label="Get started for free">
+        <a href="https://console.oneinflu.com" className={styles.tagCta} aria-label="Get started for free">
           Get started free
           <ArrowRight size={16} />
         </a>

@@ -74,7 +74,7 @@ export default function Hero() {
               </p>
 
               <div className={styles.ctaRow}>
-                <Link href="/get-started" className={`${styles.ctaPrimary} ${styles.focusRing} ${animate ? styles.enterPrimary : ""}`}>Create Free Account</Link>
+                <Link href="https://console.oneinflu.com" className={`${styles.ctaPrimary} ${styles.focusRing} ${animate ? styles.enterPrimary : ""}`}>Create Free Account</Link>
                 <button
                   type="button"
                   className={`${styles.ctaSecondary} ${styles.focusRing} ${animate ? styles.enterSecondary : ""}`}
