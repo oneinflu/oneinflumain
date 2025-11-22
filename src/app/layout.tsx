@@ -12,6 +12,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "INFLU",
   description: "Creator-friendly SaaS",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
