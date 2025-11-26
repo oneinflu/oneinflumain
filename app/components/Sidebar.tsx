@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @next/next/no-html-link-for-pages */
 'use client'
 export default function Sidebar() {
   return (
@@ -27,9 +29,7 @@ export default function Sidebar() {
             <li className="saaslyn__nav-item">
               <a className='saaslyn__nav-link' href='/about/'>About</a>
             </li>
-            <li className="saaslyn__nav-item">
-              <a className='saaslyn__nav-link' href='/blog/'>Blogs</a>
-            </li>
+           
             <li className="saaslyn__nav-item">
               <a className='saaslyn__nav-link' href='/support/'>Support</a>
             </li>
@@ -66,7 +66,7 @@ export default function Sidebar() {
               </div>
               <div className="text">
                 <a target="_blank" href="#"
-                  >Main Street, Melbourne, Australia</a>
+                  >Hyderabad,India</a>
               </div>
             </li>
             <li className="d-flex align-items-center">
@@ -74,9 +74,9 @@ export default function Sidebar() {
                 <i className="fal fa-envelope"></i>
               </div>
               <div className="text">
-                <a href="mailto:info@example.com"
-                  ><span className="mailto:info@example.com"
-                    >info@oneinflu.com</span>
+                <a href="mailto:support@example.com"
+                  ><span className="mailto:support@example.com"
+                    >support@oneinflu.com</span>
                   </a>
               </div>
             </li>
@@ -93,7 +93,7 @@ export default function Sidebar() {
                 <i className="far fa-phone"></i>
               </div>
               <div className="text">
-                <a href="tel:+11002345909">+11002345909</a>
+                <a href="tel:+919160266686">+919160266686</a>
               </div>
             </li>
           </ul>
@@ -103,12 +103,12 @@ export default function Sidebar() {
           <div className="social-icons v2">
             <ul>
               <li>
-                <a href="#">
+                <a href="https://www.facebook.com/iinflu" target="_blank">
                   <i className="fa-brands fa-facebook-f"></i>
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="https://www.instagram.com/oneinfluapp/" target="_blank">
                   <i className="fa-brands fa-instagram"></i>
                 </a>
               </li>

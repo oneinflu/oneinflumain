@@ -86,18 +86,17 @@ export default function Footer() {
                       <p className="copy-right">
                         &copy;&nbsp;Copyright&nbsp;<span
                           className="current-year"
-                        ></span
-                        >&nbsp;<a href='/'>Influ Media</a> . Tech.
+                        >2025</span>&nbsp;<a href='/'>One Influ</a> . Tech.
                       </p>
                       <div className="social-icons">
                         <ul>
                           <li>
-                            <a href="#">
+                            <a href="https://www.facebook.com/iinflu" target="_blank">
                               <i className="fa-brands fa-facebook-f"></i>
                             </a>
                           </li>
                           <li>
-                            <a href="#">
+                            <a href="https://www.instagram.com/oneinfluapp/" target="_blank">
                               <i className="fa-brands fa-instagram"></i>
                             </a>
                           </li>
