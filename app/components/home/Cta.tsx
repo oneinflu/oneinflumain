@@ -22,6 +22,6 @@ Manage campaigns, timelines, and communication seamlessly.
                 </div>
               </div>
             </div>
-          </section>
+      </section>
   );
 }
