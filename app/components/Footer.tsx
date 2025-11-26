@@ -1,10 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @next/next/no-html-link-for-pages */
 export default function Footer() {
   return (
     <footer className="footer-one v2 section section-padding-top">
           <div className="container">
             <div className="footer-one__wrapper">
               <img
-                src="assets/images/footer-long-text.svg"
+                src="/assets/images/footer-long-text.svg"
                 alt="footer-long-text"
                 className="footer-long-text"
               />
@@ -12,7 +14,7 @@ export default function Footer() {
                 <div className="col-lg-5">
                   <div className="footer-one__left">
                     <a className='logo' href='/'>
-                      <img src="assets/images/logo.svg" width={80} alt="SaasLyn" />
+                      <img src="/assets/images/logo.svg" width={80} alt="INFLU" />
                     </a>
                     <h2 className="join-title text-anime">Join the circle.</h2>
                     <a className='join-btn' href='https://console.oneinflu.com/signup'>
@@ -26,7 +28,7 @@ export default function Footer() {
                 <div className="col-lg-7">
                   <div
                     className="footer-one__right"
-                    data-bg-src="./assets/images/footer/footer-content-bg.png"
+                    data-bg-src="/assets/images/footer/footer-content-bg.png"
                   >
                     <div className="info-area">
                       <div className="links-group">
@@ -35,7 +37,7 @@ export default function Footer() {
                         <div className="link-list">
                           <ul>
                             
-                            <li><a href='/faqs'>Faq’s</a></li>
+                          
                             <li><a href='/blog'>Latest News</a></li>
                             <li><a href='/support'>Support</a></li>
                             <li><a href="/join-us">Careers</a></li>
@@ -47,16 +49,14 @@ export default function Footer() {
 
                         <div className="link-list">
                           <ul>
-                            <li><a href='/pricing'>Pricing Plan</a></li>
+                           
                             <li><a href='/about'>About Us</a></li>
-                            <li><a href='/terms-and-conditions'>Term & Conditions</a></li>
+                            <li><a href='/terms-and-conditions'>Terms & Conditions</a></li>
                           
                             <li>
                               <a href='/privacy-policy'>Privacy Policy</a>
                             </li>
-                             <li>
-                              <a href='/user-agreement'>User Agreement</a>
-                            </li>
+                             
                           </ul>
                         </div>
                       </div>
@@ -67,20 +67,16 @@ export default function Footer() {
                           <ul>
                             <li>
                               <a
-                                href="https://maps.app.goo.gl/nKez388NmcRRqRvQ7"
-                                >Suite 130 12300 Saint-Martin West Blvd. laval,
-                                Quebc USA</a
-                              >
+                                href=""
+                                >Hyderabad, India</a>
                             </li>
                             <li>
-                              <a href="mailto:support@example.com"
-                                >Support@example.com</a
-                              >
+                              <a href="mailto:support@oneinflu.com"
+                                >Support@oneinflu.com</a>
                             </li>
                             <li>
-                              <a href="tel:+8812331233332"
-                                >(+88) 1233 123 333 2</a
-                              >
+                              <a href="tel:+919160266686"
+                                >+91 91 6026 668 6</a>
                             </li>
                           </ul>
                         </div>
