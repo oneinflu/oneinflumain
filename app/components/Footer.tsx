@@ -40,7 +40,7 @@ export default function Footer() {
                           
                            
                             <li><a href='/support'>Support</a></li>
-                            <li><a href="/join-us">Careers</a></li>
+                            <li><a href="/">Careers</a></li>
                           </ul>
                         </div>
                       </div>
