@@ -1,9 +1,8 @@
-import AboutBanner from "../components/about/AboutBanner";
-import AboutHero from "../components/about/AboutHero";
-import WhyUs from "../components/about/WhyUs";
+import type { Metadata } from "next";
+
 import Footer from "../components/Footer";
 import Cta from "../components/home/Cta";
-import Features from "../components/home/Features";
+
 import BreadcrumbSupport from "../components/support/BreadcrumbSupport";
 import SupportSection from "../components/support/SupportSection";
 
@@ -22,3 +21,9 @@ export default function Support() {
     </div></div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "INFLU Support – Help for Creators, Influencers & Agencies",
+  description:
+    "Get help with INFLU’s creator CRM, campaign workflows, payments, portfolios, and client management. Browse FAQs or contact our support team anytime.",
+};

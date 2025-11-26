@@ -1,4 +1,5 @@
 
+import type { Metadata } from "next";
 import Footer from "../components/Footer";
 
 import PrivacyBreadCrumb from "../components/terms/PrivacyBreadCrumb";
@@ -19,3 +20,9 @@ export default function Privacy() {
     </div></div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "INFLU Privacy Policy – Data Protection for Creators & Agencies",
+  description:
+    "Learn how INFLU collects, stores, and protects creator, client, and campaign data. Transparent policies for influencers, agencies, and brands using the INFLU CRM platform.",
+};

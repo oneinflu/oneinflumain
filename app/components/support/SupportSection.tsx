@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 export default function SupportSection() {
   return (
     <section
@@ -14,7 +15,7 @@ export default function SupportSection() {
                         </div>
                         <div className="item-content">
                           <h6 className="item-title">Call Us 7/24</h6>
-                          <a href="tel:+2085550112">+208-555-0112</a>
+                          <a href="tel:+919160266686">+91 91 6026 668 6</a>
                         </div>
                       </div>
 
@@ -23,9 +24,9 @@ export default function SupportSection() {
                           <i className="fa-sharp fa-light fa-circle-envelope"></i>
                         </div>
                         <div className="item-content">
-                          <h6 className="item-title">Make a Quote</h6>
-                          <a href="mailto:infotek@Gmail.com"
-                            >infotek@Gmail.com</a >
+                          <h6 className="item-title">Make a Support Request</h6>
+                          <a href="mailto:support@oneinflu.com"
+                            >support@oneinflu.com</a >
                         </div>
                       </div>
 
@@ -36,9 +37,9 @@ export default function SupportSection() {
                         <div className="item-content">
                           <h6 className="item-title">Location</h6>
                           <a
-                            href="https://maps.app.goo.gl/ZYSz1E2ovusuC2G69"
+                            href=""
                             target="_blank"
-                            >4517 Washington Ave.</a >
+                            >Hyderabad, India</a >
                         </div>
                       </div>
                     </div>
@@ -68,8 +69,7 @@ Get quick assistance from our dedicated support team anytime.
                         <div className="col-md-6">
                           <div className="input-group">
                             <label htmlFor="name" className="form-label"
-                              >Your Name*</label
-                            >
+                              >Your Name*</label>
                             <input
                               type="text"
                               className="form-control"
@@ -131,7 +131,7 @@ Get quick assistance from our dedicated support team anytime.
                 <div className="col-12">
                   <iframe
                     className="contact__map"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3747016.891503112!2d87.70352446720406!3d23.489442187647825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30adaaed80e18ba7%3A0xf2d28e0c4e1fc6b!2sBangladesh!5e0!3m2!1sen!2sbd!4v1761018733651!5m2!1sen!2sbd"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.34203032876!2d78.24323694236018!3d17.412281019362375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1764182840288!5m2!1sen!2sin"
                     style={{border: 0}}
                     allowFullScreen
                     loading="lazy"
@@ -141,5 +141,5 @@ Get quick assistance from our dedicated support team anytime.
               </div>
             </div>
           </section>
-  );
+            );
 }

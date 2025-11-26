@@ -38,7 +38,7 @@ export default function Footer() {
                           <ul>
                             
                           
-                            <li><a href='/blog'>Latest News</a></li>
+                           
                             <li><a href='/support'>Support</a></li>
                             <li><a href="/join-us">Careers</a></li>
                           </ul>
