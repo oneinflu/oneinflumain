@@ -145,8 +145,8 @@ export default function WhyUs() {
               <div className="row row-padding-top">
                 <div className="col-lg-12">
                   <div className="choose-us__thumb scale">
-                    <img
-                      src="assets/images/choose-us/choose-img.png"
+                      <img
+                      src="/assets/images/choose-us/choose-img.png"
                       alt="Choose Us Image"
                       className="w-100 choose-us-img"
                     />

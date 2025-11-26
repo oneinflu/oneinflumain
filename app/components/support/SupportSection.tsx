@@ -44,7 +44,7 @@ export default function SupportSection() {
                     </div>
                     <div className="info-thumb scale">
                       <img
-                        src="assets/images/contact/contact-thumb.png"
+                        src="/assets/images/contact/contact-thumb.png"
                         alt="contact-thumb"
                         className="w-100"
                       />

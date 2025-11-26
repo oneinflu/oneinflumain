@@ -40,7 +40,7 @@ Track every interaction in one dashboard to grow your agency faster.
                 <div className="col-lg-6">
                   <div className="appreciation__thumb scale">
                     <img
-                      src="assets/images/appreciation/appreciation-thumb.png"
+                      src="/assets/images/appreciation/appreciation-thumb.png"
                       alt="appreciation"
                       className="w-100"
                     />

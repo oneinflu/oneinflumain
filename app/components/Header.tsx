@@ -6,7 +6,7 @@ export default function Header() {
         <div className="container">
           <div className="header-one__main">
             <a className='header-one__logo' href='/'>
-              <img src="assets/images/logo.svg" width="80" alt="logo" />
+              <img src="/assets/images/logo.svg" width="80" alt="logo" />
             </a>
             <div className="header-one__main-menu menu-right">
               <nav className="circle">
@@ -17,15 +17,15 @@ export default function Header() {
                  
                   </li>
                   <li>
-                    <a href='/about'> About </a>
+                    <a href='/about/'> About </a>
                   </li>
                  
                   <li>
-                    <a href="/blog">Blogs</a>
+                    <a href="/blog/">Blogs</a>
                     
                   </li>
                   <li>
-                    <a href='/support'>Support</a>
+                    <a href='/support/'>Support</a>
                   </li>
                 </ul>
               </nav>

@@ -14,7 +14,7 @@ export default function BlogArea() {
                   <div className="blog__item v2">
                     <a className='blog-thumb scale' href='blog-details.html'>
                       <img
-                        src="assets/images/blog/blog-thumb-1.png"
+                        src="/assets/images/blog/blog-thumb-1.png"
                         alt="blog-thumb"
                         className="w-100"
                       />
@@ -48,7 +48,7 @@ export default function BlogArea() {
                   <div className="blog__item v2">
                     <a className='blog-thumb scale' href='blog-details.html'>
                       <img
-                        src="assets/images/blog/blog-thumb-2.png"
+                        src="/assets/images/blog/blog-thumb-2.png"
                         alt="blog-thumb"
                         className="w-100"
                       />
@@ -83,7 +83,7 @@ export default function BlogArea() {
                   <div className="blog__item v2">
                     <a className='blog-thumb scale' href='blog-details.html'>
                       <img
-                        src="assets/images/blog/blog-thumb-3.png"
+                        src="/assets/images/blog/blog-thumb-3.png"
                         alt="blog-thumb"
                         className="w-100"
                       />
@@ -117,7 +117,7 @@ export default function BlogArea() {
                   <div className="blog__item v2">
                     <a className='blog-thumb scale' href='blog-details.html'>
                       <img
-                        src="assets/images/blog/blog-thumb-4.png"
+                        src="/assets/images/blog/blog-thumb-4.png"
                         alt="blog-thumb"
                         className="w-100"
                       />
@@ -151,7 +151,7 @@ export default function BlogArea() {
                   <div className="blog__item v2">
                     <a className='blog-thumb scale' href='blog-details.html'>
                       <img
-                        src="assets/images/blog/blog-thumb-5.png"
+                        src="/assets/images/blog/blog-thumb-5.png"
                         alt="blog-thumb"
                         className="w-100"
                       />
@@ -185,7 +185,7 @@ export default function BlogArea() {
                   <div className="blog__item v2">
                     <a className='blog-thumb scale' href='blog-details.html'>
                       <img
-                        src="assets/images/blog/blog-thumb-6.png"
+                        src="/assets/images/blog/blog-thumb-6.png"
                         alt="blog-thumb"
                         className="w-100"
                       />

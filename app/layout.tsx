@@ -5,8 +5,7 @@ import Script from 'next/script'
 
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import Footer from "./components/Footer";
-import Preloader from "./components/Preloader";
+
 import Progress from "./components/Progress";
 
 const geistSans = Geist({
@@ -31,13 +30,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-       <head>
-        {/* Favicon */}
-        <link rel="icon" href="assets/images/favicon.png" type="image/x-icon" />
-
-        {/* CSS files from public folder */}
-        <link rel="stylesheet" href="assets/css/plugins.css" />
-        <link rel="stylesheet" href="assets/css/style.css" />
+      <head>
+        <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon" />
+        <link rel="stylesheet" href="/assets/css/plugins.css" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased home-one`}

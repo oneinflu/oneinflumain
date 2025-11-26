@@ -3,7 +3,7 @@ export default function AboutHero() {
        <section className="breadcrumb-area section">
             <div
               className="breadcrumb-area__wrapper"
-              data-bg-src="assets/images/breadcrumb/breadcrumb-bg.png"
+              data-bg-src="/assets/images/breadcrumb/breadcrumb-bg.png"
             >
               <div className="container">
                 <div className="row">
