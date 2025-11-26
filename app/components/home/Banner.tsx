@@ -74,24 +74,7 @@ export default function Banner() {
                       <div className="button-group">
                         <a className='saaslyn-1-btn' href='https://console.oneinflu.com/signup'>Lifetime Free</a
                         >
-                        <a className='learn-more' href='about.html'>
-                          Learn More
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                          >
-                            <path
-                              d="M9.00005 6C9.00005 6 15 10.4189 15 12C15 13.5812 9 18 9 18"
-                              stroke="currentColor"
-                              stroke-width="2"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            />
-                          </svg>
-                        </a>
+                       
 
                         <img
                           src="assets/images/banner/star-1.png"
@@ -129,26 +112,29 @@ export default function Banner() {
                 fill="#7397E9"
               />
             </svg>
-            <div className="daily-statistic">
-              <div className="statistic-header">
-                <h6 className="title">Daily Statistics</h6>
-                <p>
-                  Donut charts are ideal for co,paring proportions of a whole.
-                </p>
-              </div>
-              <div className="statistic-container">
-                <div className="donut-statistic">
-                  <svg className="statistic-svg" viewBox="0 0 240 240"></svg>
-                </div>
-              </div>
-              <div
-                className="legend"
-                id="legend"
-                data-labels="Parameter 1,Parameter 2,Parameter 3,Parameter 4,Parameter 5,Parameter 6"
-                data-values="25,22,20,18,10,5"
-                data-colors="#FF6B8A,#4ECDC4,#45B7D1,#96CEB4,#FECA57,#FF9FF3"
-              ></div>
-            </div>
+           <div className="daily-statistic">
+  <div className="statistic-header">
+    <h6 className="title">Daily Performance Overview</h6>
+    <p>
+      This donut chart visualizes key performance metrics and their contribution to the overall daily activity.
+    </p>
+  </div>
+
+  <div className="statistic-container">
+    <div className="donut-statistic">
+      <svg className="statistic-svg" viewBox="0 0 240 240"></svg>
+    </div>
+  </div>
+
+  <div
+    className="legend"
+    id="legend"
+    data-labels="Leads Generated,Deals in Pipeline,Deals Closed,Follow-ups Done,Tasks Completed,Revenue Progress"
+    data-values="25,22,20,18,10,5"
+    data-colors="#6C5CE7,#00CEC9,#0984E3,#74B9FF,#FDCB6E,#E84393"
+  ></div>
+</div>
+
           </section>
   );
 }
