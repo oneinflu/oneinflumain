@@ -7,7 +7,7 @@ import Reports from "./components/home/Reports";
 ;
 import Faqs from "./components/home/Faqs";
 
-import Blogs from "./components/home/Blogs";
+
 import Cta from "./components/home/Cta";
 
 export default function Home() {
@@ -22,7 +22,7 @@ export default function Home() {
         
           <Faqs />
          
-          <Blogs />
+        
           <Cta />
           </main>
           <Footer />
