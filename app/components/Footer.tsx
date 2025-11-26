@@ -15,7 +15,7 @@ export default function Footer() {
                       <img src="assets/images/logo.svg" width={80} alt="SaasLyn" />
                     </a>
                     <h2 className="join-title text-anime">Join the circle.</h2>
-                    <a className='join-btn' href='/get-started'>
+                    <a className='join-btn' href='https://console.oneinflu.com/signup'>
                       <span className="text">Get Started</span>
                       <span className="icon-box">
                         <i className="fa-regular fa-arrow-right"></i>

@@ -16,7 +16,7 @@ export default function Cta() {
                      Centralize your client and creator information for instant clarity.
 Manage campaigns, timelines, and communication seamlessly.
                       </p>
-                      <a className='saaslyn-1-btn v2' href='/get-started'>Try for free</a>
+                      <a className='saaslyn-1-btn v2' href='https://console.oneinflu.com/signup'>Try for free</a>
                     </div>
                   </div>
                 </div>

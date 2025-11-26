@@ -16,7 +16,7 @@ export default function FeaturesTwo() {
                           Turn complex creator, client, and project operations into simple, organized workflows—built for UGC teams, agencies, and influencers.
                         </p>
                       </div>
-                      <a className='saaslyn-1-btn v2' href='/get-started'>Lifetime Free</a >
+                      <a className='saaslyn-1-btn v2' href='https://console.oneinflu.com/signup'>Lifetime Free</a >
                     </div>
                   </div>
                   <div className="col-lg-7">
@@ -133,7 +133,7 @@ export default function FeaturesTwo() {
                           </ul>
                         </div>
                       </div>
-                      <a className='saaslyn-1-btn v2' href='/get-started'>Lifetime Free</a >
+                      <a className='saaslyn-1-btn v2' href='https://console.oneinflu.com/signup'>Lifetime Free</a >
                       
                     </div>
                   </div>

@@ -72,7 +72,7 @@ export default function Banner() {
                         <span></span>
                       </h1>
                       <div className="button-group">
-                        <a className='saaslyn-1-btn' href='/get-started'>Lifetime Free</a
+                        <a className='saaslyn-1-btn' href='https://console.oneinflu.com/signup'>Lifetime Free</a
                         >
                         <a className='learn-more' href='about.html'>
                           Learn More

@@ -31,7 +31,7 @@ Track every interaction in one dashboard to grow your agency faster.
                       </p>
                     </div>
                     <div className="btn-customer">
-                      <a className='saaslyn-1-btn v2' href='/get-started'>Get Started Free</a
+                      <a className='saaslyn-1-btn v2' href='https://console.oneinflu.com/signup'>Get Started Free</a
                       >
                       
                     </div>

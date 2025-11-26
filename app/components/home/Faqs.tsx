@@ -41,7 +41,7 @@ export default function Faqs() {
                         className="accordion-collapse collapse show"
                         data-bs-parent="#faqExample"
                       >
-                        <div className="accordion-body">
+                        <div className="accordion-body text-white">
                          INFLU unifies creator profiles, client details, briefs, deliverables, approvals, invoices, and payments into one clean dashboard. Agencies can easily track work, assign tasks, manage communication, and keep every creator and client aligned without juggling multiple tools.
                         </div>
                       </div>

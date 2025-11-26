@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 
 export default function Header() {
   return (
@@ -31,8 +32,8 @@ export default function Header() {
               </nav>
               <div className="header-one__menu-btns">
                 <div className="buttons">
-                  <a className='saaslyn-2-btn' href='/get-started'>Try for free</a>
-                  <a className='saaslyn-1-btn v2' href='/login'>Login</a>
+                  <a className='saaslyn-2-btn' href='https://console.oneinflu.com/signup'>Try for free</a>
+                  <a className='saaslyn-1-btn v2' href='https://console.oneinflu.com/signin'>Login</a>
                 </div>
                 <button
                   className="hamburger-menu"

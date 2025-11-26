@@ -37,7 +37,7 @@ export default function Sidebar() {
         </nav>
         <div className="header-one__menu-btns mt-3">
           <div className="buttons">
-            <a className='saaslyn-2-btn' href='/get-started'>Try for free</a>
+            <a className='saaslyn-2-btn' href='https://console.oneinflu.com/signup'>Try for free</a>
             <a className='saaslyn-1-btn v2' href='/login'>Login</a>
           </div>
         </div>
