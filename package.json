@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:static": "NEXT_EXPORT=true next build && npx next export",
+    "build:server": "NEXT_EXPORT=false next build",
     "start": "next start",
     "lint": "eslint"
   },
