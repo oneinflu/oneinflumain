@@ -6,11 +6,11 @@ import { SlugProvider } from "../../context/SlugContext";
 
 type Props = { params: { slug: string } };
 
-export const dynamic = "force-dynamic";
+export const dynamic = "error";
 
 // Optional: pre-render known slugs at build time; all others render dynamically
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const source = process.env.NEXT_PUBLIC_PROFILE_SLUGS || process.env.PROFILE_SLUGS || "";
+  const source = process.env.NEXT_PUBLIC_PROFILE_SLUGS || process.env.PROFILE_SLUGS || "example";
   const slugs = source
     .split(",")
     .map((s) => s.trim())
