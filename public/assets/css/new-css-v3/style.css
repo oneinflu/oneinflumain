@@ -3002,3 +3002,7 @@ aside .single-aside .aside-tag-wrap li a:hover {
 }
 
 /*# sourceMappingURL=style.css.map */
+/* Hide native download button on HTML5 video in WebKit browsers */
+.no-download video::-webkit-media-controls-download-button { display: none !important; }
+.no-download video::-webkit-media-controls-enclosure { overflow: hidden; }
+.no-download video { user-select: none; -webkit-user-select: none; -moz-user-select: none; }

@@ -352,6 +352,52 @@
   };
   initTestimonials2Slider();
 
+  // Service Slider
+  const initServiceSlider = () => {
+    const slider = document.querySelector('.service__slider');
+    if (!slider) return;
+
+    const prev = slider.querySelector('.service__arry-prev');
+    const next = slider.querySelector('.service__arry-next');
+
+    const swiper = new Swiper(slider, {
+      loop: true,
+      spaceBetween: 24,
+      grabCursor: true,
+      breakpoints: {
+        1400: { slidesPerView: 3 },
+        1200: { slidesPerView: 3 },
+        992: { slidesPerView: 2 },
+        320: { slidesPerView: 1 },
+      },
+      navigation: prev && next ? { prevEl: prev, nextEl: next } : undefined,
+    });
+  };
+  initServiceSlider();
+
+  // Portfolio Slider
+  const initPortfolioSlider = () => {
+    const slider = document.querySelector('.portfolio__slider');
+    if (!slider) return;
+
+    const prev = slider.querySelector('.portfolio__arry-prev');
+    const next = slider.querySelector('.portfolio__arry-next');
+
+    const swiper = new Swiper(slider, {
+      loop: true,
+      spaceBetween: 24,
+      grabCursor: true,
+      breakpoints: {
+        1400: { slidesPerView: 4 },
+        1200: { slidesPerView: 3 },
+        992: { slidesPerView: 2 },
+        320: { slidesPerView: 1 },
+      },
+      navigation: prev && next ? { prevEl: prev, nextEl: next } : undefined,
+    });
+  };
+  initPortfolioSlider();
+
   // Set Current Year JS
   const setCurrentYear = () => {
     const currentYear = new Date().getFullYear();

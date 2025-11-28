@@ -3,6 +3,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Footer from "../../components/Footer";
 import { SlugProvider } from "../../context/SlugContext";
+import ProfileHeader from "../../components/profile/ProfileHeader";
+import ProfileServices from "../../components/profile/ProfileServices";
+import ProfileTeam from "../../components/profile/ProfileTeam";
+import ProfilePortfolio from "../../components/profile/ProfilePortfolio";
+import ProfileTestimonials from "@/app/components/profile/ProfileTestimonials";
+import Cta from "@/app/components/home/Cta";
 
 type Props = { params: { slug: string } };
 
@@ -42,45 +48,14 @@ export default async function ProfileSlug({ params }: { params: Promise<{ slug: 
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <main>
-            <section className="breadcrumb-area section">
-              <div
-                className="breadcrumb-area__wrapper"
-                data-bg-src="/assets/images/breadcrumb/breadcrumb-bg.png"
-              >
-                <div className="container">
-                  <div className="row">
-                    <div className="col-12">
-                      <div className="breadcrumb-area__content">
-                        <h1 className="breadcrumb-title text-anime">Profile: {title}</h1>
-                        <nav className="breadcrumb-nav" aria-label="breadcrumb">
-                          <ol className="breadcrumb">
-                            <li className="breadcrumb-item">
-                              <a href="/">Home</a>
-                            </li>
-                            <li className="breadcrumb-item active" aria-current="page">
-                              {title}
-                            </li>
-                          </ol>
-                        </nav>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
+            
 
-            <section className="features section section-padding-top-bottom">
-              <div className="container">
-                <div className="row justify-content-center">
-                  <div className="col-md-8 col-lg-7 col-xxl-6">
-                    <div className="section-header">
-                      <h2 className="section-title text-anime">Dynamic Profile</h2>
-                      <p>Slug: {slug}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
+            <ProfileHeader />
+            <ProfileServices />
+            <ProfilePortfolio />
+            <ProfileTeam />
+            <ProfileTestimonials />
+          <Cta />
           </main>
           <Footer />
         </div>
