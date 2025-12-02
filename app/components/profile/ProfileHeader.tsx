@@ -2,46 +2,72 @@
 "use client";
 import { useSlug } from "../../context/SlugContext";
 
-type Profile = {
-  photoUrl: string;
-  name: string;
-  role: string;
-  location: string;
-  shortBio: string;
-  verified?: boolean;
+type SocialHandle = { platform: string; url: string };
+type ProfileData = {
+  heroImage?: string | null;
+  cover_photo?: string | null;
+  ownerRef?: { registration?: { avatar?: string } };
+  profile?: {
+    title?: string;
+    subtitle?: string;
+    role?: string;
+    locationAddress?: string;
+    websiteUrl?: string;
+    socialHandles?: SocialHandle[];
+    ctaPhoneEnabled?: boolean;
+    ctaPhoneLabel?: string;
+    ctaPhoneNumber?: string;
+    ctaEmailEnabled?: boolean;
+    ctaEmailLabel?: string;
+    ctaEmailAddress?: string;
+  };
 };
 
 function titleCase(input: string) {
   return input.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
-
-function getProfile(slug: string): Profile {
-  const name = titleCase(slug || "Profile");
-  return {
-    photoUrl: "/assets/images/team/team-details-thumb.png",
-    name,
-    role: "UGC Agency",
-    location: "Hyderabad, India",
-    shortBio:
-      "Building authentic content and campaign workflows for brands and agencies.",
-    verified: true,
-  };
+function cleanUrl(u?: string) {
+  if (!u) return "";
+  return u.replace(/`/g, "").trim();
+}
+function platformIcon(name?: string) {
+  const p = (name || "").toLowerCase();
+  if (p.includes("instagram")) return "fa-brands fa-instagram";
+  if (p.includes("facebook")) return "fa-brands fa-facebook-f";
+  if (p.includes("linkedin")) return "fa-brands fa-linkedin-in";
+  if (p.includes("youtube")) return "fa-brands fa-youtube";
+  if (p.includes("twitter") || p.includes("x")) return "fa-brands fa-x-twitter";
+  return "fa-solid fa-link";
 }
 
-export default function ProfileHeader() {
+export default function ProfileHeader({ data }: { data: ProfileData }) {
   const slug = useSlug() || "profile";
-  const profile = getProfile(slug);
+  const name = data.profile?.title || titleCase(slug);
+  const role = data.profile?.role || "";
+  const location = data.profile?.locationAddress || "";
+  const website = cleanUrl(data.profile?.websiteUrl);
+  const imgSrc = cleanUrl(
+    data.heroImage || data.cover_photo || data.ownerRef?.registration?.avatar || "/assets/images/team/team-details-thumb.png"
+  );
+  const subtitle = data.profile?.subtitle || "";
+  const phoneEnabled = !!data.profile?.ctaPhoneEnabled;
+  const phoneLabel = data.profile?.ctaPhoneLabel || "Call";
+  const phoneNumber = data.profile?.ctaPhoneNumber || "";
+  const emailEnabled = !!data.profile?.ctaEmailEnabled;
+  const emailLabel = data.profile?.ctaEmailLabel || "Email";
+  const emailAddress = data.profile?.ctaEmailAddress || "";
+  const handles = data.profile?.socialHandles || [];
 
   return (
     <section className="section section-padding-top-bottom">
       <div className="container">
-        <div className="testimonial__item" >
-          <div className="row py-3 px-2" style={{ borderRadius: "32px" }}  data-bg-src="/assets/images/testimonial/testimonial-card-bg.png">
+       
+          <div className="row py-3 px-2 justify-center" style={{ borderRadius: "32px" }}  data-bg-src="/assets/images/testimonial/testimonial-card-bg.png">
             <div className="col-lg-5 col-md-5 col-sm-12 justify-center p-2" >
               
               <div className="team-details__content">
                       <div className="section-header text-center">
-                         <img src={profile.photoUrl} alt={profile.name} className="w-100 " style={{ borderRadius: "10%" }}  />
+                         <img src={imgSrc} alt={name} className="w-100" style={{ borderRadius: "10%" }}  />
                        
                         
                       </div>
@@ -56,18 +82,16 @@ export default function ProfileHeader() {
                <div className="team-details__content">
                       <div className="section-header">
                       
-                        <h2 className="section-title text-anime" style={{ perspective: "400px" }}>One Influ </h2>
-                        <p>  Digital agencies focus on understanding their client’s
-                          business goals, target audience and unique challenges.
-                        </p>
+                        <h2 className="section-title text-anime" style={{ perspective: "400px" }}>{name}</h2>
+                        <p>{subtitle}</p>
                       </div>
                       <div className="user-infos">
                         <ul>
                           <li>
-                            <span>ROLE</span>: {profile.role}
+                            <span>ROLE</span>: {role}
                           </li>
-                          <li><span>LOCATION</span>: {profile.location}</li>
-                           <li><span>WEBSITE</span>: <a href="https://www.oneinflu.com/" target="_blank">www.oneinflu.com</a></li>
+                          <li><span>LOCATION</span>: {location}</li>
+                           <li><span>WEBSITE</span>: {website ? (<a href={website} target="_blank">{website}</a>) : ""}</li>
                          
                         </ul>
                       </div>
@@ -75,24 +99,23 @@ export default function ProfileHeader() {
                         <span>Follow Us On:</span>
                         <div className="social-media v3 ">
                           <ul>
-                            <li>
-                              <a href="#0"><i className="fa-brands fa-facebook-f"></i></a>
-                            </li>
-                            <li>
-                              <a href="#0"><i className="fa-brands fa-instagram"></i></a>
-                            </li>
-                            <li>
-                              <a href="#0"><i className="fa-brands fa-linkedin-in"></i></a>
-                            </li>
-                            <li>
-                              <a href="#0"><i className="fa-brands fa-youtube"></i></a>
-                            </li>
+                            {handles.map((h) => (
+                              <li key={h.url}>
+                                <a href={cleanUrl(h.url)} target="_blank" aria-label={h.platform}>
+                                  <i className={platformIcon(h.platform)}></i>
+                                </a>
+                              </li>
+                            ))}
                           </ul>
                         </div>
                         <hr/>
                         <div className="buttons">
-                  <a className='saaslyn-2-btn mx-2' href='https://console.oneinflu.com/signup'>Call Us</a>
-                  <a className='saaslyn-1-btn v2' href='https://console.oneinflu.com/signin'>Book Now</a>
+                  {phoneEnabled && phoneNumber ? (
+                    <a className='saaslyn-2-btn mx-2' href={`tel:${phoneNumber}`}>{phoneLabel}</a>
+                  ) : null}
+                  {emailEnabled && emailAddress ? (
+                    <a className='saaslyn-1-btn v2' href={`mailto:${emailAddress}`}>{emailLabel}</a>
+                  ) : null}
                 </div>
                       </div>
                        
@@ -100,7 +123,7 @@ export default function ProfileHeader() {
                     </div>
             </div>
           </div>
-        </div>
+       
       </div>
     </section>
   );

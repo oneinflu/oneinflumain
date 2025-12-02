@@ -1,87 +1,26 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 /* eslint-disable @next/next/no-img-element */
 
 "use client";
-import { useSlug } from "../../context/SlugContext";
 
-type Service = {
-  id: string;
-  name: string;
-  description: string;
-  icon?: string;
-};
-
-type RateCard = {
-  serviceId: string;
-  startingPrice: number;
-  currency: string;
-};
-
-function getServices(_slug: string): Service[] {
-  return [
-    {
-      id: "ugc-content",
-      name: "UGC Content Production",
-      description:
-        "End-to-end short-form video, product showcases, and brand-ready creatives.",
-      icon: "bi-camera-video",
-    },
-    {
-      id: "editing",
-      name: "Video Editing",
-      description:
-        "Cuts, captions, motion graphics, color, sound design, and delivery to spec.",
-      icon: "bi-scissors",
-    },
-    {
-      id: "influencer-campaigns",
-      name: "Influencer Campaigns",
-      description:
-        "Plan, source, and run creator campaigns with briefs, approvals, and tracking.",
-      icon: "bi-people",
-    },
-    {
-      id: "photography",
-      name: "Product Photography",
-      description:
-        "High-quality product shots for ecom, ads, and social with fast turnarounds.",
-      icon: "bi-camera",
-    },
-    {
-      id: "influencer-campaigns",
-      name: "Influencer Campaigns",
-      description:
-        "Plan, source, and run creator campaigns with briefs, approvals, and tracking.",
-      icon: "bi-people",
-    },
-    {
-      id: "photography",
-      name: "Product Photography",
-      description:
-        "High-quality product shots for ecom, ads, and social with fast turnarounds.",
-      icon: "bi-camera",
-    },
-  ];
-}
-
-function getRateCards(_slug: string): RateCard[] {
-  return [
-    { serviceId: "ugc-content", startingPrice: 199, currency: "USD" },
-    { serviceId: "editing", startingPrice: 149, currency: "USD" },
-    { serviceId: "influencer-campaigns", startingPrice: 499, currency: "USD" },
-    { serviceId: "photography", startingPrice: 299, currency: "USD" },
-  ];
-}
-
-export default function ProfileServices() {
-  const slug = useSlug() || "profile";
-  const services = getServices(slug);
-  const rateCards = getRateCards(slug);
-
-  const priceFor = (id: string) => {
-    const rc = rateCards.find((r) => r.serviceId === id);
-    return rc ? `${rc.currency} ${rc.startingPrice}` : "Contact";
+type ProfileData = {
+  servicesSection?: {
+    services_section_enabled?: boolean;
+    services_section_title?: string;
+    services_section_subtitle?: string;
+    display_services?: {
+      service_id: string | { _id: string; name?: string; description?: string };
+      description?: string;
+      starting_price?: number;
+      show_price?: boolean;
+      _id?: string;
+    }[];
   };
+};
+
+export default function ProfileServices({ data }: { data: ProfileData }) {
+  const s = data.servicesSection;
+  const services = s?.display_services || [];
 
 
   return (
@@ -91,8 +30,8 @@ export default function ProfileServices() {
           <div className="col-md-12">
             <div className="section-header text-center">
             
-              <h2 className="section-title text-anime">What We Offer</h2>
-              <p>Explore service cards with starting prices and quick actions.</p>
+              <h2 className="section-title text-anime">{s?.services_section_title || "Services"}</h2>
+              <p>{s?.services_section_subtitle || ""}</p>
            
             </div>
           </div>
@@ -103,16 +42,20 @@ export default function ProfileServices() {
           <div className="col-12">
             <div className="swiper service__slider">
               <div className="swiper-wrapper">
-                {services.map((s) => (
-                  <div key={s.id} className="swiper-slide">
+                {services.map((item) => {
+                  const key = item._id || (typeof item.service_id === "object" ? item.service_id._id : item.service_id);
+                  return (
+                  <div key={key} className="swiper-slide">
                     <div className="features__item" >
                       
                       <div className="item-content text-center" >
-                        <h6 className="item-title">{s.name}</h6>
-                        <p className="item-description">{s.description}</p>
-                       <span className="badge bg-primary my-4">From {priceFor(s.id)}</span>
+                        <h6 className="item-title">{typeof item.service_id === "object" ? (item.service_id.name || item.description || item.service_id._id) : (item.description || item.service_id)}</h6>
+                        <p className="item-description">{item.description || (typeof item.service_id === "object" ? (item.service_id.description || "") : "")}</p>
+                       {item.show_price && typeof item.starting_price === "number" ? (
+                         <span className="badge bg-primary my-4">From {item.starting_price}</span>
+                       ) : null}
                          <br></br>
-                           <a className="saaslyn-1-btn v2" href={`/support?service=${encodeURIComponent(s.name)}`}>Request Service</a>
+                           <a className="saaslyn-1-btn v2" href={`/support?service=${encodeURIComponent(typeof item.service_id === "object" ? (item.service_id.name || item.description || item.service_id._id) : (item.description || item.service_id))}`}>Request Service</a>
                        
                       </div>
                       <img
@@ -122,7 +65,7 @@ export default function ProfileServices() {
                       />
                     </div>
                   </div>
-                ))}
+                );})}
               </div>
               <div className="service__arry-prev"><i className="bi bi-arrow-left"></i></div>
               <div className="service__arry-next"><i className="bi bi-arrow-right"></i></div>

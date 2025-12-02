@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+import { useEffect, useState } from "react";
 
 type TeamMember = {
   id: string;
@@ -8,25 +9,126 @@ type TeamMember = {
   photoUrl: string;
 };
 
-function getTeam(): TeamMember[] {
-  return [
-    { id: "mike-rosenberg", name: "Mike Rosenberg", designation: "Photographer", photoUrl: "/assets/images/team/team-thumb-1.png" },
-    { id: "maria-tenent", name: "Maria Tenent", designation: "Copywriter", photoUrl: "/assets/images/team/team-thumb-2.png" },
-    { id: "alexander-xolla", name: "Alexander Xolla", designation: "Designer", photoUrl: "/assets/images/team/team-thumb-3.png" },
-    { id: "isabella-nyugen", name: "Isabella Nyugen", designation: "Designer", photoUrl: "/assets/images/team/team-thumb-4.png" },
-      ];
+function titleCaseId(id: string) {
+  return id.replace(/[-_]/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+function clean(v?: string) {
+  if (!v) return "";
+  return v.replace(/`/g, "").trim();
 }
 
-export default function ProfileTeam() {
-  const team = getTeam();
+type CollaboratorObj = {
+  _id: string;
+  name?: string;
+  designation?: string;
+  photoUrl?: string;
+  image?: string;
+  avatar?: string;
+  identity?: { profile_icon_url?: string; profile_name?: string };
+  contact?: { email?: string };
+  socials?: { instagram?: string };
+  type?: string;
+  users?: { registration?: { name?: string }; profile?: { slug?: string } };
+};
+
+type ProfileData = {
+  collaboratorsSection?: {
+    collaborators_section_title?: string;
+    collaborators_section_subtitle?: string;
+    published_collaborators?: Array<string | CollaboratorObj>;
+  };
+};
+
+export default function ProfileTeam({ data }: { data: ProfileData }) {
+  const [team, setTeam] = useState<TeamMember[]>([]);
+
+  function firstImage(obj: Partial<CollaboratorObj>): string {
+    const v = obj.photoUrl || obj.image || obj.avatar || obj.identity?.profile_icon_url || "";
+    return clean(v);
+  }
+  function resolveName(obj: Partial<CollaboratorObj>, fallbackId: string) {
+    const name = obj.users?.registration?.name || obj.name || obj.identity?.profile_name || "";
+    if (name.trim()) return name.trim();
+    const slug = obj.users?.profile?.slug || "";
+    if (slug) return titleCaseId(slug);
+    const email = obj.contact?.email || "";
+    if (email) {
+      const local = email.split("@")[0];
+      if (local) return titleCaseId(local.replace(/[^a-zA-Z0-9_-]/g, " "));
+    }
+    const insta = obj.socials?.instagram || "";
+    if (insta) {
+      const u = clean(insta);
+      const m = u.match(/https?:\/\/[^/]+\/(.+)$/);
+      if (m && m[1]) return titleCaseId(m[1]);
+    }
+    const type = obj.type || "";
+    if (type) return type;
+    return titleCaseId(fallbackId);
+  }
+
+  useEffect(() => {
+    async function load() {
+      const published = data.collaboratorsSection?.published_collaborators || [];
+      const asObjects = published.filter((x) => typeof x === "object") as CollaboratorObj[];
+      if (asObjects.length) {
+        setTeam(
+          asObjects.map((c, i) => ({
+            id: c._id,
+            name: resolveName(c, c._id),
+            designation: c.type || c.designation || "Collaborator",
+            photoUrl: firstImage(c) || `/assets/images/team/team-thumb-${(i % 4) + 1}.png`,
+          }))
+        );
+        return;
+      }
+      const ids = published.filter((x) => typeof x === "string") as string[];
+      if (!ids.length) {
+        setTeam([]);
+        return;
+      }
+      async function fetchOne(id: string) {
+        const tryUrls = [
+          `https://backend.oneinflu.com/api/public-collaborators/${encodeURIComponent(id)}`,
+          `https://backend.oneinflu.com/api/collaborators/${encodeURIComponent(id)}`,
+        ];
+        for (const url of tryUrls) {
+          try {
+            const res = await fetch(url, { cache: "no-store" });
+            if (!res.ok) continue;
+            const j = (await res.json()) as Partial<CollaboratorObj>;
+            const name = resolveName(j, id);
+            const photo = firstImage(j);
+            return {
+              id,
+              name,
+              designation: (j.designation as string) || "Collaborator",
+              photoUrl: photo || `/assets/images/team/team-thumb-1.png`,
+            } as TeamMember;
+          } catch {
+            continue;
+          }
+        }
+        return {
+          id,
+          name: titleCaseId(id),
+          designation: "Collaborator",
+          photoUrl: `/assets/images/team/team-thumb-1.png`,
+        } as TeamMember;
+      }
+      const results = await Promise.all(ids.map((id) => fetchOne(id)));
+      setTeam(results.filter(Boolean) as TeamMember[]);
+    }
+    load();
+  }, [data.collaboratorsSection?.published_collaborators]);
   return (
     <section className="team-main section section-padding-top-bottom">
         <div className="row justify-content-between align-items-end">
           <div className="col-md-12">
             <div className="section-header text-center mb-5">
             
-              <h2 className="section-title text-anime">Our Team & Collaborators</h2>
-              <p>Explore team cards with starting prices and quick actions.</p>
+              <h2 className="section-title text-anime">{data?.collaboratorsSection?.collaborators_section_title || "Our Team & Collaborators"}</h2>
+              <p>{data?.collaboratorsSection?.collaborators_section_subtitle || ""}</p>
            
             </div>
           </div>

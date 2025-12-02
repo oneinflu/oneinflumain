@@ -4,7 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from 'next/script'
 
-import Header from "./components/Header";
+import LayoutHeader from "./components/LayoutHeader";
 import Sidebar from "./components/Sidebar";
 
 import Progress from "./components/Progress";
@@ -42,7 +42,7 @@ export default function RootLayout({
       >
         
         <Progress />
-         <Header />
+         <LayoutHeader />
          <Sidebar />
          
         {children}
